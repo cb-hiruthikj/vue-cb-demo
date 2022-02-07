@@ -1,43 +1,21 @@
 <template>
   <div class="modal is-active">
-    <div class="modal-background" @click="$emit('closeAddMember')"></div>
+    <div class="modal-background" @click="$emit('closeUpdateMember')"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Invite a team member to use ChargeBee</p>
+          <p class="modal-card-title">Change role for {{ email }}</p>
         <button
           class="delete"
           aria-label="close"
-          @click="$emit('closeAddMember')"
+          @click="$emit('closeUpdateMember')"
         ></button>
       </header>
 
       <form
-        id="addForm"
-        @submit.prevent="addMember"
-        @closeAddMember="clearAddForm"
+        id="updateForm"
+        @submit.prevent="updateMember"
       >
         <section class="modal-card-body">
-          <p>
-            You can either let your team members access everything in this site,
-            or assign specific roles to them.
-          </p>
-
-          <div class="field">
-            <label class="label">Email</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input"
-                type="email"
-                placeholder="example@chargebee.com"
-                required
-                v-model="email"
-              />
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-            </div>
-          </div>
-
           <RoleList>
             <RoleView
               v-for="role in roles"
@@ -51,10 +29,10 @@
         </section>
 
         <footer class="modal-card-foot">
-          <button class="button is-success" type="submit" @click="addMember">
-            Invite
+          <button class="button is-success" type="submit" @click="updateMember">
+            Update
           </button>
-          <button class="button" type="button" @click="$emit('closeAddMember')">
+          <button class="button" type="button" @click="$emit('closeUpdateMember')">
             Cancel
           </button>
         </footer>
@@ -70,8 +48,8 @@ import RoleList from "./RoleList.vue";
 import RoleView from "./RoleView.vue";
 
 export default {
-  name: "AddMember",
-  title: "Add Member",
+  name: "UpdateMember",
+  title: "Update Member",
   components: {
     RoleList,
     RoleView,
@@ -88,9 +66,9 @@ export default {
     },
   },
   methods: {
-    addMember() {
-      console.log("Added Member");
-      this.$store.commit("addMember", {
+    updateMember() {
+      console.log("Updated Member");
+      this.$store.commit("updateMember", {
         id: uuidv4(),
         name: this.email,
         email: this.email,
@@ -98,18 +76,11 @@ export default {
           (i) => this.selectedRoles[i]
         ),
       });
-      this.$emit("closeAddMember");
+      this.$emit("closeUpdateMember");
     },
     toggleRole(id) {
       this.selectedRoles[id] = !this.selectedRoles[id];
       console.log(this.selectedRoles);
-    },
-    // TODO: Clear Form
-
-    clearAddForm() {
-      console.log("Cleared Form");
-      this.email = "";
-      this.selectedRoles = [false, false, false];
     },
   },
 };
