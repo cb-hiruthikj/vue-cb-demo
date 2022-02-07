@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="section is-medium">
+    <header class="section is-medium">
       <h1 class="title is-pulled-left">Add Members (count)</h1>
       <button
         class="button is-link is-pulled-right"
@@ -8,54 +8,30 @@
       >
         + Invite Members
       </button>
-    </div>
+    </header>
 
     <AddMember v-show="showAddMember" @closeAddMember="showAddMember = false">
-      <RoleList>
-        <RoleView title="Admin" description="Access everything in Chargebee" />
-        <RoleView
-          title="Tech Support"
-          description='User can view "Subscriptions" and "Product Catalog" tabs. Can
-            also view, add comments to, send, download individual
-            Invoices/Credit Notes.'
-        />
-        <RoleView
-          title="Analyst"
-          description="In addition to Tech Support level access, user will have
-              access to the SaaS metrics report."
-        />
-      </RoleList>
+
     </AddMember>
 
-    <div class="columns is-centered is-mobile">
-      <ul class="list column is-8">
-        <li class="list-item">
-          <TeamMember
-            name="Hiruthik J"
-            email="hiruthik.j@chargebee.com"
-            role="Admin"
-          />
-          <TeamMember
-            name="Hiruthik J"
-            email="hiruthik.j@chargebee.com"
-            role="Admin"
-          />
-          <TeamMember
-            name="Hiruthik J"
-            email="hiruthik.j@chargebee.com"
-            role="Admin"
-          />
-        </li>
-      </ul>
-    </div>
+    <TeamList>
+      <TeamMember
+        v-for="member in membersList"
+        :key="member.id"
+        :name="member.name"
+        :email="member.email"
+        :roles="member.roles"
+      />
+    </TeamList>
   </div>
 </template>
 
-<script lang='ts'>
+<script>
 import TeamMember from "./TeamMember.vue";
 import AddMember from "./AddMember.vue";
 import RoleList from "./RoleList.vue";
 import RoleView from "./RoleView.vue";
+import TeamList from "./TeamList.vue";
 
 export default {
   name: "TeamView",
@@ -64,12 +40,17 @@ export default {
     AddMember,
     RoleList,
     RoleView,
+    TeamList,
   },
   data() {
     return {
       showAddMember: false,
-      members: [],
     };
+  },
+  computed: {
+    membersList() {
+      return this.$store.state.membersList;
+    },
   },
 };
 </script>

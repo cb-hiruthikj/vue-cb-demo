@@ -4,7 +4,6 @@
 
     <aside class="menu">
       <ul class="menu-list">
-        <!-- <li v-for="role in roles" :key="role.title">{{ role }}</li> -->
         <slot></slot>
       </ul>
     </aside>
@@ -18,13 +17,5 @@ export default {
   components: {
     RoleView
   },
-  data(){
-    return {
-      roles: []
-    }
-  },
-  created() {
-    this.roles = this.$children;
-  }
 }
 </script>

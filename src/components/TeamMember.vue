@@ -9,7 +9,7 @@
       <div class="content">
         <p>
           <strong>{{ name }}</strong>
-          <small><RoleTag v-if="role" :role="role" /></small>
+          <small><RoleTag v-for="role in roles" :key="role" :roleId="role" /></small>
           <br />
           {{ email }}
         </p>
@@ -31,19 +31,13 @@ export default {
   props: {
     name: { required: true },
     email: { required: true },
-    role: { default: "" },
+    roles: { required: true },
   },
   components: {
     RoleTag,
     ManageMember,
   },
-  methods: {},
 };
 </script>
 
 
-<style scoped>
-article {
-  padding: 1rem;
-}
-</style>

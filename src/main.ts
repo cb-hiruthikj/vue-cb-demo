@@ -10,7 +10,20 @@ new Vue({
   render: (h) => h(App),
   data: {
     email: "",
-    roles: []
+    selectedRoles: [
+      {
+        id: 1,
+        isChecked: false
+      },
+      {
+        id: 2,
+        isChecked: false
+      },
+      {
+        id: 3,
+        isChecked: false
+      },
+    ],
   },
 }).$mount('#app');
 

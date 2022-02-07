@@ -1,12 +1,23 @@
 <template>
-  <span class="tag is-link">{{role}}</span>
+  <span class="tag is-link is-light">{{ roleTitle }}</span>
 </template>
 
 <script>
 export default {
   name: "RoleTag",
   props: {
-    role: { required: true },
-  }
-}
+    roleId: { required: true },
+  },
+  computed: {
+    roleTitle() {
+      return this.$store.state.roles.find(role => role.id === this.roleId).title;
+    },
+  },
+};
 </script>
+
+<style scoped>
+span{
+  margin-left: 5px;
+}
+</style>

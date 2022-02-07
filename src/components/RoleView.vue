@@ -1,7 +1,7 @@
 <template>
   <label class="checkbox">
     <div class="is-pulled-left">
-      <input type="checkbox" v-model="isSelected" />
+      <input type="checkbox" :value="isChecked" @change="$emit('toggleCheck', data_id)" />
     </div>
     <div class="is-pulled-right member-role">
       <strong> {{ title }} </strong> <br />
@@ -16,10 +16,13 @@ export default {
   props: {
     title: { required: true },
     description: { default: "" },
+    key: { required: true },
+    id: { required: true },
   },
   data() {
     return {
-      isSelected: { default: false },
+      data_id: this.id,
+      isChecked: false,
     };
   },
 };
