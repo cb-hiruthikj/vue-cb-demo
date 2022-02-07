@@ -27,7 +27,7 @@
         </section>
 
         <footer class="modal-card-foot">
-          <button class="button is-success" type="submit">Update</button>
+          <button class="button is-info" type="submit">Update</button>
           <button
             class="button"
             type="button"
