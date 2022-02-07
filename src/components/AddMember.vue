@@ -6,6 +6,7 @@
         <p class="modal-card-title">Invite a team member to use ChargeBee</p>
         <button
           class="delete"
+          type="button"
           aria-label="close"
           @click="$emit('closeAddMember')"
         ></button>

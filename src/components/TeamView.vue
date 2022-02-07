@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header class="section is-medium">
-      <h1 class="title is-pulled-left">Add Members (count)</h1>
+      <h1 class="title is-pulled-left has-text-weight-bold">Add Members ({{ memberCount }})</h1>
       <button
         class="button is-link is-pulled-right"
         @click="showAddMember = !showAddMember"
@@ -18,6 +18,7 @@
       <TeamMember
         v-for="member in membersList"
         :key="member.id"
+        :id="member.id"
         :name="member.name"
         :email="member.email"
         :roles="member.roles"
@@ -51,6 +52,9 @@ export default {
     membersList() {
       return this.$store.state.membersList;
     },
+    memberCount() {
+      return this.$store.state.membersList.length;
+    }
   },
 };
 </script>

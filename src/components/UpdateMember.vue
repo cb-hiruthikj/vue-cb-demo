@@ -3,18 +3,16 @@
     <div class="modal-background" @click="$emit('closeUpdateMember')"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-          <p class="modal-card-title">Change role for {{ email }}</p>
+        <p class="modal-card-title">Change role for {{ email }}</p>
         <button
           class="delete"
+          type="button"
           aria-label="close"
           @click="$emit('closeUpdateMember')"
         ></button>
       </header>
 
-      <form
-        id="updateForm"
-        @submit.prevent="updateMember"
-      >
+      <form id="updateForm" @submit.prevent="callUpdateMember">
         <section class="modal-card-body">
           <RoleList>
             <RoleView
@@ -29,10 +27,12 @@
         </section>
 
         <footer class="modal-card-foot">
-          <button class="button is-success" type="submit" @click="updateMember">
-            Update
-          </button>
-          <button class="button" type="button" @click="$emit('closeUpdateMember')">
+          <button class="button is-success" type="submit">Update</button>
+          <button
+            class="button"
+            type="button"
+            @click="$emit('closeUpdateMember')"
+          >
             Cancel
           </button>
         </footer>
@@ -43,7 +43,6 @@
 
 
 <script>
-import { v4 as uuidv4 } from "uuid";
 import RoleList from "./RoleList.vue";
 import RoleView from "./RoleView.vue";
 
@@ -54,6 +53,7 @@ export default {
     RoleList,
     RoleView,
   },
+  props: ["name", "email", "roles", "id"],
   data() {
     return {
       email: "",
@@ -66,16 +66,19 @@ export default {
     },
   },
   methods: {
-    updateMember() {
+    callUpdateMember() {
       console.log("Updated Member");
       this.$store.commit("updateMember", {
-        id: uuidv4(),
+        id: this.id,
         name: this.email,
         email: this.email,
         roles: [...this.selectedRoles.keys()].filter(
           (i) => this.selectedRoles[i]
         ),
       });
+      console.log(
+        this.id
+      );
       this.$emit("closeUpdateMember");
     },
     toggleRole(id) {

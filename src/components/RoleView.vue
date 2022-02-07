@@ -16,7 +16,6 @@ export default {
   props: {
     title: { required: true },
     description: { default: "" },
-    key: { required: true },
     id: { required: true },
   },
   data() {

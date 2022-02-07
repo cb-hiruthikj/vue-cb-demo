@@ -41,9 +41,20 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    addMember(state, member): void {
+    addMember(state, member) {
       state.membersList.push(member)
-    }
+    },
+    updateMember(state, member) {
+      for (let i = 0; i < state.membersList.length; i += 1) {
+        if (state.membersList[i].id === member.id) {
+          state.membersList[i].roles = member.roles;
+          break;
+        }
+      }
+    },
+    deleteMember(state, id) {
+      state.membersList = state.membersList.filter(member => member.id !== id);
+    },
   },
   getters: {
     getMembers(state) {

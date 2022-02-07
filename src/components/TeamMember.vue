@@ -9,14 +9,16 @@
       <div class="content">
         <p>
           <strong>{{ name }}</strong>
-          <small><RoleTag v-for="role in roles" :key="role" :roleId="role" /></small>
+          <small
+            ><RoleTag v-for="role in roles" :key="role" :roleId="role"
+          /></small>
           <br />
           {{ email }}
         </p>
       </div>
     </div>
     <div class="media-right">
-      <ManageMember />
+      <ManageMember :name="name" :email="email" :roles="roles" :id="id"/>
     </div>
   </article>
 </template>
@@ -32,6 +34,8 @@ export default {
     name: { required: true },
     email: { required: true },
     roles: { required: true },
+    id: { required: true },
+
   },
   components: {
     RoleTag,
