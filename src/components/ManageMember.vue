@@ -26,10 +26,26 @@
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <a href="#" class="dropdown-item" @click="showUpdateModal = true">
+          <a
+            href="#"
+            class="dropdown-item"
+            @click="
+              showUpdateModal = true;
+              dropDownState = !dropDownState;
+            "
+          >
             Edit Role
           </a>
-          <a href="#" class="dropdown-item is-danger" @click="showDeleteModal = true"> Remove </a>
+          <a
+            href="#"
+            class="dropdown-item is-danger"
+            @click="
+              showDeleteModal = true;
+              dropDownState = !dropDownState;
+            "
+          >
+            Remove
+          </a>
         </div>
       </div>
     </div>
