@@ -1,12 +1,13 @@
 <template>
   <label class="checkbox">
-    <div class="is-pulled-left">
-      <input type="checkbox" :value="isChecked" @change="$emit('toggleCheck', data_id)" />
-    </div>
-    <div class="is-pulled-right member-role">
-      <strong> {{ title }} </strong> <br />
-      <p class="is-1">{{ description }}</p>
-    </div>
+    <input
+      type="checkbox"
+      :value="isChecked"
+      @change="$emit('toggleCheck', data_id)"
+    />
+
+    <strong> {{ title }} </strong> <br />
+    <p class="is-1">{{ description }}</p>
   </label>
 </template>
 
@@ -26,3 +27,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  label {
+    margin: 10px;
+  }
+</style>

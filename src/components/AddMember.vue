@@ -22,6 +22,7 @@
             You can either let your team members access everything in this site,
             or assign specific roles to them.
           </p>
+          <br>
 
           <div class="field">
             <label class="label">Email</label>
