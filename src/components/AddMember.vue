@@ -53,7 +53,7 @@
         </section>
 
         <footer class="modal-card-foot">
-          <button class="button is-success" type="submit" @click="addMember">
+          <button class="button is-success" type="submit">
             Invite
           </button>
           <button class="button" type="button" @click="$emit('closeAddMember')">
