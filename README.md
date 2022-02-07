@@ -1,5 +1,7 @@
 # Starter Project
 
+Demo: https://vue-cb-demo-hiruthik.netlify.app/ 
+
 This is a starter template that makes use of the following packages
 
 * Vue 2
