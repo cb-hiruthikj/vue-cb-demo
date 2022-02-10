@@ -29,7 +29,7 @@
           <a
             href="#"
             class="dropdown-item"
-            @click="
+            @click.prevent="
               showUpdateModal = true;
               dropDownState = !dropDownState;
             "
@@ -39,7 +39,7 @@
           <a
             href="#"
             class="dropdown-item is-danger"
-            @click="
+            @click.prevent="
               showDeleteModal = true;
               dropDownState = !dropDownState;
             "
