@@ -13,8 +13,5 @@ import TeamMember from "./TeamMember.vue";
 
 export default {
   name: "TeamList",
-  components: {
-    TeamMember,
-  },
 }
 </script>
