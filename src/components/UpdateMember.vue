@@ -1,9 +1,9 @@
 <template>
-  <div class="modal is-active">
+  <div class="modal is-active" tabindex="-1" @keydown.esc="$emit('closeUpdateMember')">
     <div class="modal-background" @click="$emit('closeUpdateMember')"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Change role for {{ email }}</p>
+        <p class="modal-card-title">Change role for {{ memberObj.email }}</p>
         <button
           class="delete"
           type="button"
@@ -53,7 +53,9 @@ export default {
     RoleList,
     RoleView,
   },
-  props: ["name", "email", "roles", "id"],
+  props: {
+    memberObj: { required: true },
+  },
   data() {
     return {
       email: "",
@@ -69,9 +71,9 @@ export default {
     callUpdateMember() {
       console.log("Updated Member");
       this.$store.commit("updateMember", {
-        id: this.id,
-        name: this.email,
-        email: this.email,
+        id: this.memberObj.id,
+        name: this.memberObj.email,
+        email: this.memberObj.email,
         roles: [...this.selectedRoles.keys()].filter(
           (i) => this.selectedRoles[i]
         ),

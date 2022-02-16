@@ -3,16 +3,12 @@
     <UpdateMember
       v-if="showUpdateModal"
       @closeUpdateMember="showUpdateModal = false"
-      :name="name"
-      :email="email"
-      :roles="roles"
-      :id="id"
+      :memberObj="memberObj"
     />
     <DeleteMember
       @closeDeleteModal="showDeleteModal = false"
       v-if="showDeleteModal"
-      :id="id"
-      :email="email"
+      :memberObj="memberObj"
     />
     <div :class="{ dropdown: true, 'is-active': dropDownState }">
       <div class="dropdown-trigger" @click="dropDownState = !dropDownState">
@@ -58,7 +54,9 @@ import DeleteMember from "./DeleteMember.vue";
 
 export default {
   name: "ManageMember",
-  props: ["name", "email", "roles", "id"],
+  props: {
+    memberObj: { required: true },
+  },
   components: {
     UpdateMember,
     DeleteMember,

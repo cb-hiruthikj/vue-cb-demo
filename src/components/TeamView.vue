@@ -10,18 +10,14 @@
       </button>
     </header>
 
-    <AddMember v-show="showAddMember" @closeAddMember="showAddMember = false">
-
-    </AddMember>
+    <AddMember v-show="showAddMember" @closeAddMember="showAddMember = false" />
 
     <TeamList>
       <TeamMember
         v-for="member in membersList"
         :key="member.id"
-        :id="member.id"
-        :name="member.name"
-        :email="member.email"
-        :roles="member.roles"
+        :memberObj="member"
+
       />
     </TeamList>
   </div>
@@ -53,7 +49,7 @@ export default {
       return this.$store.state.membersList;
     },
     memberCount() {
-      return this.$store.state.membersList.length;
+      return this.membersList.length;
     }
   },
 };

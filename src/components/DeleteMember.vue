@@ -14,7 +14,7 @@
           <i class="fas fa-info-circle" id="info-icon"></i>
         </figure>
         <p class="has-text-centered delete-warning">
-          <strong>{{ email }} will not be able to access the site.</strong>
+          <strong>{{ memberObj.email }} will not be able to access the site.</strong>
         </p>
         <div class="has-text-centered">
           <button
@@ -41,8 +41,7 @@
 export default {
   name: "DeleteMember",
   props: {
-    id: { required: true },
-    email: { required: true },
+    memberObj: { required: true },
   },
   data() {
     return {
@@ -52,7 +51,7 @@ export default {
   methods: {
     callDeleteMember() {
       console.log("Deleted Member");
-      this.$store.commit("deleteMember", this.id);
+      this.$store.commit("deleteMember", this.memberObj.id);
       this.showDeleteModal = false;
     },
   },

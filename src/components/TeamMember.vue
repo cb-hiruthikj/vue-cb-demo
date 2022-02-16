@@ -8,17 +8,17 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{ name }}</strong>
-          <small
-            ><RoleTag v-for="role in roles" :key="role" :roleId="role"
-          /></small>
+          <strong>{{ memberObj.name }}</strong>
+          <small>
+            <RoleTag v-for="role in memberObj.roles" :key="role" :roleId="role" />
+          </small>
           <br />
-          {{ email }}
+          {{ memberObj.email }}
         </p>
       </div>
     </div>
     <div class="media-right">
-      <ManageMember :name="name" :email="email" :roles="roles" :id="id"/>
+      <ManageMember :memberObj="memberObj" />
     </div>
   </article>
 </template>
@@ -31,11 +31,7 @@ import ManageMember from "./ManageMember.vue";
 export default {
   name: "TeamMember",
   props: {
-    name: { required: true },
-    email: { required: true },
-    roles: { required: true },
-    id: { required: true },
-
+    memberObj: { required: true },
   },
   components: {
     RoleTag,
