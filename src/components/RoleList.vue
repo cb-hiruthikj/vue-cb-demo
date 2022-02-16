@@ -11,11 +11,5 @@
 </template>
 
 <script>
-import RoleView from "./RoleView.vue";
 
-export default {
-  components: {
-    RoleView
-  },
-}
 </script>

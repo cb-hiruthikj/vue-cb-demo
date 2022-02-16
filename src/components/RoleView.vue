@@ -1,5 +1,5 @@
 <template>
-  <label class="checkbox">
+  <label class="checkbox m-2">
     <input
       type="checkbox"
       :value="isChecked"
@@ -27,9 +27,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-  label {
-    margin: 10px;
-  }
-</style>

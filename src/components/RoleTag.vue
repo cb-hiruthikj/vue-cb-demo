@@ -1,5 +1,5 @@
 <template>
-  <span class="tag is-link is-light">{{ roleTitle }}</span>
+  <span class="tag is-link is-light mx-1">{{ roleTitle }}</span>
 </template>
 
 <script>
@@ -16,8 +16,3 @@ export default {
 };
 </script>
 
-<style scoped>
-span{
-  margin-left: 5px;
-}
-</style>
